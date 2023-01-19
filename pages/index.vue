@@ -13,7 +13,7 @@
 
     <!-- MENU DASHBOARD -->
     <div class="w-full py-4 bg-blue-400">
-      <div class="w-full max-w-[90%] mx-auto flex flex-wrap gap-x-4">
+      <div class="w-full max-w-[90%] mx-auto flex flex-wrap gap-x-10">
         <div class="w-fit cursor-pointer" @click="chosenMenu = 1">
           <p
             class="text-xl text-white"
@@ -77,7 +77,7 @@
           </div>
 
           <client-only>
-            <BarChart :data="chartBarData" :options="chartOptions" />
+            <BarChart :data="chartMaritalStatusData" :options="chartOptions" />
           </client-only>
         </div>
         <div class="w-1/2 px-4">
@@ -88,7 +88,10 @@
           </div>
 
           <client-only>
-            <DoughnutChart :data="chartDoughnutData" :options="chartOptions" />
+            <DoughnutChart
+              :data="chartEducationFormalData"
+              :options="chartOptions"
+            />
           </client-only>
         </div>
       </div>
@@ -162,6 +165,63 @@
         </div>
       </div>
     </div>
+
+    <!-- FINAL RESULT -->
+    <div class="w-full max-w-[90%] mx-auto pt-10 pb-20" v-if="chosenMenu === 3">
+      <div class="w-full">
+        <h1 class="font-bold text-3xl mb-5">
+          Salary Recommendation for Prospective New Employees - Final Result
+        </h1>
+        <vue-good-table
+          :columns="columnsFinal"
+          :rows="rows"
+          :search-options="{
+            enabled: true,
+          }"
+          :pagination-options="{
+            enabled: true,
+            mode: 'records',
+          }"
+          styleClass="vgt-table striped bordered"
+        />
+      </div>
+
+      <div class="w-full flex flex-wrap gap-y-10 mt-10">
+        <div class="w-full px-4">
+          <div class="w-full text-center mb-5">
+            <label class="font-bold text-3xl"
+              >Recommendation Salary for Applicant</label
+            >
+          </div>
+
+          <!-- <client-only>
+            <LineChart
+              :data="chartRecommendationSalaryData"
+              :options="chartOptions"
+            />
+          </client-only> -->
+
+          <client-only>
+            <BarChart
+              :data="chartRecommendationSalaryData"
+              :options="chartOptions"
+            />
+          </client-only>
+        </div>
+        <div class="w-1/2 px-4">
+          <div class="w-full text-center mb-5">
+            <label class="font-bold text-3xl"
+              >Comparison Category Value from Lowest & Highest
+              Recommendation</label
+            >
+          </div>
+
+          <client-only>
+            <LineChart :data="chartStackedBarData" :options="chartOptions" />
+          </client-only>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -171,6 +231,27 @@ export default {
   data() {
     return {
       chosenMenu: 1,
+      columnsFinal: [
+        {
+          label: 'No',
+          field: 'id',
+          type: 'number',
+        },
+        {
+          label: 'Name',
+          field: 'name',
+        },
+        {
+          label: 'Crisp Output',
+          field: 'crispOutputSalary',
+          type: 'number',
+        },
+        {
+          label: 'Recommendation Salary (Crisp Output x Rp 1.000.000)',
+          field: 'finalSalary',
+          type: 'number',
+        },
+      ],
       columnsFuzzy: [
         {
           label: 'No',
@@ -1882,7 +1963,7 @@ export default {
     }
   },
   computed: {
-    chartBarData() {
+    chartMaritalStatusData() {
       let notMarried = this.rows.filter(
         (res) => res.marital === 'Belum menikah'
       )
@@ -1900,7 +1981,7 @@ export default {
         ],
       }
     },
-    chartDoughnutData() {
+    chartEducationFormalData() {
       let SD = this.rows.filter((res) => res.education.includes('SD'))
       let SMP = this.rows.filter((res) => res.education.includes('SMP'))
       let SMA = this.rows.filter((res) => res.education.includes('SMA'))
@@ -2016,6 +2097,80 @@ export default {
             fill: false,
             backgroundColor: '#800000',
             borderColor: '#dfdadd',
+            // borderWidth: 2,
+          },
+        ],
+      }
+    },
+    chartRecommendationSalaryData() {
+      let labels = []
+      let value = []
+      for (let i = 0; i < this.rows.length; i++) {
+        labels.push(this.rows[i].name)
+        value.push(this.rows[i].finalSalary)
+      }
+      return {
+        labels: labels,
+        datasets: [
+          {
+            label: 'Recommendation Salary',
+            data: value,
+            fill: false,
+            backgroundColor: '#528bff',
+            borderColor: '#f29d32',
+            // borderWidth: 2,
+          },
+        ],
+      }
+    },
+    chartStackedBarData() {
+      let labels = []
+
+      let findLowest = this.rows.find((res) => res.id === '22')
+      let lowest = {
+        personalInformation: findLowest.fuzzyPersonalInformation,
+        skills: findLowest.fuzzySkills,
+        attitude: findLowest.fuzzyAttitude,
+        experiece: findLowest.fuzzyExperience,
+      }
+      let findHighest = this.rows.find((res) => res.id === '16')
+      let highest = {
+        personalInformation: findHighest.fuzzyPersonalInformation,
+        skills: findHighest.fuzzySkills,
+        attitude: findHighest.fuzzyAttitude,
+        experiece: findHighest.fuzzyExperience,
+      }
+
+      let arr = []
+      arr.push(lowest)
+      arr.push(highest)
+      return {
+        labels: ['Personal Information', 'Skills', 'Attitude', 'Experience'],
+        datasets: [
+          {
+            label: 'Applicant 22',
+            data: [
+              lowest.personalInformation,
+              lowest.skills,
+              lowest.attitude,
+              lowest.experiece,
+            ],
+            fill: false,
+            backgroundColor: '#800000',
+            borderColor: '#b1c3ff',
+            // borderWidth: 2,
+          },
+          {
+            label: 'Applicant 16',
+            data: [
+              highest.personalInformation,
+              highest.skills,
+              highest.attitude,
+              highest.experiece,
+            ],
+            fill: false,
+            backgroundColor: '#800000',
+            borderColor: '#ffc3c3',
             // borderWidth: 2,
           },
         ],
