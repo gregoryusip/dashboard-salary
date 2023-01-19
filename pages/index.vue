@@ -194,19 +194,19 @@
             >
           </div>
 
-          <client-only>
+          <!-- <client-only>
             <LineChart
               :data="chartRecommendationSalaryData"
               :options="chartOptions"
             />
-          </client-only>
+          </client-only> -->
 
-          <!-- <client-only>
+          <client-only>
             <BarChart
               :data="chartRecommendationSalaryData"
               :options="chartOptions"
             />
-          </client-only> -->
+          </client-only>
         </div>
         <div class="w-1/2 px-4">
           <div class="w-full text-center mb-5">
@@ -217,7 +217,7 @@
           </div>
 
           <client-only>
-            <BarChart :data="chartStackedBarData" :options="chartOptions" />
+            <LineChart :data="chartStackedBarData" :options="chartOptions" />
           </client-only>
         </div>
       </div>
@@ -1937,15 +1937,15 @@ export default {
       },
       chartOptions: {
         scales: {
-          yAxes: [
-            {
-              stacked: true,
-              ticks: {
-                beginAtZero: true,
-                min: 0,
-              },
-            },
-          ],
+          // yAxes: [
+          //   {
+          //     stacked: true,
+          //     ticks: {
+          //       beginAtZero: true,
+          //       min: 0,
+          //     },
+          //   },
+          // ],
           xAxes: [
             {
               stacked: true,
@@ -2032,6 +2032,7 @@ export default {
             label: 'Personal Information',
             data: value,
             fill: false,
+            tension: 0,
             backgroundColor: '#800000',
             borderColor: '#ffcb2d',
             // borderWidth: 2,
@@ -2053,6 +2054,7 @@ export default {
             label: 'Skills',
             data: value,
             fill: false,
+            tension: 0,
             backgroundColor: '#800000',
             borderColor: '#ffc3c3',
             // borderWidth: 2,
@@ -2074,6 +2076,7 @@ export default {
             label: 'Skills',
             data: value,
             fill: false,
+            tension: 0,
             backgroundColor: '#800000',
             borderColor: '#b1c3ff',
             // borderWidth: 2,
@@ -2095,6 +2098,7 @@ export default {
             label: 'Skills',
             data: value,
             fill: false,
+            tension: 0,
             backgroundColor: '#800000',
             borderColor: '#dfdadd',
             // borderWidth: 2,
@@ -2116,6 +2120,7 @@ export default {
             label: 'Recommendation Salary',
             data: value,
             fill: false,
+            tension: 0,
             backgroundColor: '#528bff',
             borderColor: '#f29d32',
             // borderWidth: 2,
@@ -2156,6 +2161,7 @@ export default {
               lowest.experiece,
             ],
             fill: false,
+            tension: 0,
             backgroundColor: '#b1c3ff',
             borderColor: '#b1c3ff',
             // borderWidth: 2,
@@ -2169,6 +2175,7 @@ export default {
               highest.experiece,
             ],
             fill: false,
+            tension: 0,
             backgroundColor: '#ffc3c3',
             borderColor: '#ffc3c3',
             // borderWidth: 2,
