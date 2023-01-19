@@ -194,19 +194,19 @@
             >
           </div>
 
-          <!-- <client-only>
+          <client-only>
             <LineChart
               :data="chartRecommendationSalaryData"
               :options="chartOptions"
             />
-          </client-only> -->
+          </client-only>
 
-          <client-only>
+          <!-- <client-only>
             <BarChart
               :data="chartRecommendationSalaryData"
               :options="chartOptions"
             />
-          </client-only>
+          </client-only> -->
         </div>
         <div class="w-1/2 px-4">
           <div class="w-full text-center mb-5">
@@ -217,7 +217,7 @@
           </div>
 
           <client-only>
-            <LineChart :data="chartStackedBarData" :options="chartOptions" />
+            <BarChart :data="chartStackedBarData" :options="chartOptions" />
           </client-only>
         </div>
       </div>
