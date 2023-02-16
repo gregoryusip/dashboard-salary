@@ -3,3 +3,10 @@ body {
   font-family: 'Nunito', sans-serif;
   color: #1f1f1f;
 }
+
+.menu--item {
+  @apply text-base text-white py-2;
+}
+.menu--item-active {
+  @apply font-bold text-base text-white underline underline-offset-4 py-2;
+}
