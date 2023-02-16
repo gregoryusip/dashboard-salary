@@ -17,18 +17,18 @@
           <h1 class="font-bold text-2xl">DASHBOARD</h1>
           <p class="font-bold text-sm">DSM for Determining Employee Salaries</p>
           <div class="w-full h-0.5 bg-white my-4"></div>
-          <a href="/">
+          <nuxt-link to="/">
             <p class="menu--item">Home</p>
-          </a>
-          <a href="/raw-data">
+          </nuxt-link>
+          <nuxt-link to="/raw-data">
             <p class="menu--item-active">Raw Data</p>
-          </a>
-          <a href="/first-fuzzy">
+          </nuxt-link>
+          <nuxt-link to="/first-fuzzy">
             <p class="menu--item">First Fuzzy</p>
-          </a>
-          <a href="/final-result">
+          </nuxt-link>
+          <nuxt-link to="/final-result">
             <p class="menu--item">Final Result</p>
-          </a>
+          </nuxt-link>
         </div>
       </div>
       <div class="w-[85%] bg-white">
