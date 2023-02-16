@@ -2,223 +2,114 @@
   <!-- <Tutorial /> -->
   <div class="w-full">
     <!-- NAVBAR -->
-    <div class="w-full py-4 shadow-md">
+    <!-- <div class="w-full py-4 shadow-md">
       <div
         class="w-full max-w-[90%] mx-auto flex flex-wrap justify-between items-center"
       >
-        <h1 class="font-bold text-2xl text-">DASHBOARD</h1>
+        <h1 class="font-bold text-2xl">DASHBOARD</h1>
         <img src="@/assets/img/binus-socs.png" alt="" class="w-[150px]" />
       </div>
-    </div>
+    </div> -->
 
-    <!-- MENU DASHBOARD -->
-    <div class="w-full py-4 bg-blue-400">
-      <div class="w-full max-w-[90%] mx-auto flex flex-wrap gap-x-10">
-        <div class="w-fit cursor-pointer" @click="chosenMenu = 1">
-          <p
-            class="text-xl text-white"
-            :class="{
-              'font-normal': chosenMenu !== 1,
-              'font-bold': chosenMenu === 1,
-            }"
-          >
-            Home
-          </p>
-        </div>
-        <div class="w-fit cursor-pointer" @click="chosenMenu = 2">
-          <p
-            class="text-xl text-white"
-            :class="{
-              'font-normal': chosenMenu !== 2,
-              'font-bold': chosenMenu === 2,
-            }"
-          >
-            Fuzzy 1st
-          </p>
-        </div>
-        <div class="w-fit cursor-pointer" @click="chosenMenu = 3">
-          <p
-            class="text-xl text-white"
-            :class="{
-              'font-normal': chosenMenu !== 3,
-              'font-bold': chosenMenu === 3,
-            }"
-          >
-            Final Result
-          </p>
+    <div class="w-full flex flex-wrap relative">
+      <div
+        class="w-[15%] min-h-screen bg-[#00425A] text-white relative px-4 py-5"
+      >
+        <div class="w-full h-fit sticky top-10">
+          <h1 class="font-bold text-2xl">DASHBOARD</h1>
+          <p class="font-bold text-sm">DSM for Determining Employee Salaries</p>
+          <div class="w-full h-0.5 bg-white my-4"></div>
+          <a href="/">
+            <p class="menu--item-active">Home</p>
+          </a>
+          <a href="/raw-data">
+            <p class="menu--item">Raw Data</p>
+          </a>
+          <a href="/first-fuzzy">
+            <p class="menu--item">First Fuzzy</p>
+          </a>
+          <a href="/final-result">
+            <p class="menu--item">Final Result</p>
+          </a>
         </div>
       </div>
-    </div>
-
-    <!-- HOME -->
-    <div class="w-full max-w-[90%] mx-auto pt-10 pb-20" v-if="chosenMenu === 1">
-      <div class="w-full">
-        <h1 class="font-bold text-3xl mb-5">Raw Data</h1>
-        <vue-good-table
-          :columns="columnsHome"
-          :rows="rows"
-          :search-options="{
-            enabled: true,
-          }"
-          :pagination-options="{
-            enabled: true,
-            mode: 'records',
-          }"
-          styleClass="vgt-table striped bordered"
-        />
-      </div>
-
-      <div class="w-full flex flex-wrap mt-10">
-        <div class="w-1/2 px-4">
-          <div class="w-full text-center mb-5">
-            <label class="font-bold text-3xl"
-              >Marital Status of Applicant</label
-            >
+      <div class="w-[85%] bg-white">
+        <div class="w-full px-20 pt-10 pb-20">
+          <div class="w-full border-b-2 border-[#F5F5F5] pb-2 mb-4">
+            <h1 class="font-bold text-4xl text-dark">Home</h1>
+          </div>
+          <div class="w-full flex flex-wrap justify-center gap-y-4 -mx-2">
+            <div class="w-1/2 px-2">
+              <div class="w-full border-2 border-[#F5F5F5] rounded-md">
+                <div class="w-full bg-[#F5F5F5] text-center py-3">
+                  <p class="font-semibold text-base text-dark-text">
+                    Total Data
+                  </p>
+                </div>
+                <div class="w-full text-center py-3">
+                  <p class="font-bold text-xl text-dark-text">
+                    {{ rows.length }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="w-1/2 px-2">
+              <div class="w-full border-2 border-[#F5F5F5] rounded-md">
+                <div class="w-full bg-[#F5F5F5] text-center py-3">
+                  <p class="font-semibold text-base text-dark-text">Position</p>
+                </div>
+                <div class="w-full text-center py-3">
+                  <p class="font-bold text-xl text-dark-text">Web Developer</p>
+                </div>
+              </div>
+            </div>
+            <div class="w-1/2 px-2">
+              <div class="w-full border-2 border-[#F5F5F5] rounded-md">
+                <div class="w-full bg-[#F5F5F5] text-center py-3">
+                  <p class="font-semibold text-base text-dark-text">
+                    Average Salary Recommendation
+                  </p>
+                </div>
+                <div class="w-full text-center py-3">
+                  <p class="font-bold text-xl text-dark-text">
+                    <!-- {{ averageRecommendationSalary }} -->
+                    Rp {{ formatRupiah(averageRecommendationSalary) }}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <client-only>
-            <BarChart :data="chartMaritalStatusData" :options="chartOptions" />
-          </client-only>
-        </div>
-        <div class="w-1/2 px-4">
-          <div class="w-full text-center mb-5">
-            <label class="font-bold text-3xl"
-              >Education Formal of Applicant</label
-            >
+          <div class="w-full flex flex-wrap mt-10">
+            <div class="w-1/2 px-4">
+              <div class="w-full text-center mb-5">
+                <label class="font-bold text-xl"
+                  >Marital Status of Applicant</label
+                >
+              </div>
+
+              <client-only>
+                <BarChart
+                  :data="chartMaritalStatusData"
+                  :options="chartOptions"
+                />
+              </client-only>
+            </div>
+            <div class="w-1/2 px-4">
+              <div class="w-full text-center mb-5">
+                <label class="font-bold text-xl"
+                  >Education Formal of Applicant</label
+                >
+              </div>
+
+              <client-only>
+                <DoughnutChart
+                  :data="chartEducationFormalData"
+                  :options="chartOptions"
+                />
+              </client-only>
+            </div>
           </div>
-
-          <client-only>
-            <DoughnutChart
-              :data="chartEducationFormalData"
-              :options="chartOptions"
-            />
-          </client-only>
-        </div>
-      </div>
-    </div>
-
-    <!-- FUZZY 1ST -->
-    <div class="w-full max-w-[90%] mx-auto pt-10 pb-20" v-if="chosenMenu === 2">
-      <div class="w-full">
-        <h1 class="font-bold text-3xl mb-5">
-          First Stage of Fuzzy Logic - Result
-        </h1>
-        <vue-good-table
-          :columns="columnsFuzzy"
-          :rows="rows"
-          :search-options="{
-            enabled: true,
-          }"
-          :pagination-options="{
-            enabled: true,
-            mode: 'records',
-          }"
-          styleClass="vgt-table striped bordered"
-        />
-      </div>
-
-      <div class="w-full flex flex-wrap gap-y-10 mt-10">
-        <div class="w-1/2 px-4">
-          <div class="w-full text-center mb-5">
-            <label class="font-bold text-3xl"
-              >Personal Information Value of Applicant</label
-            >
-          </div>
-
-          <client-only>
-            <LineChart
-              :data="chartPersonalInformationData"
-              :options="chartOptions"
-            />
-          </client-only>
-        </div>
-        <div class="w-1/2 px-4">
-          <div class="w-full text-center mb-5">
-            <label class="font-bold text-3xl">Skills Value of Applicant</label>
-          </div>
-
-          <client-only>
-            <LineChart :data="chartSkillsData" :options="chartOptions" />
-          </client-only>
-        </div>
-        <div class="w-1/2 px-4">
-          <div class="w-full text-center mb-5">
-            <label class="font-bold text-3xl"
-              >Attitude Value of Applicant</label
-            >
-          </div>
-
-          <client-only>
-            <LineChart :data="chartAttitudeData" :options="chartOptions" />
-          </client-only>
-        </div>
-        <div class="w-1/2 px-4">
-          <div class="w-full text-center mb-5">
-            <label class="font-bold text-3xl"
-              >Experience Value of Applicant</label
-            >
-          </div>
-
-          <client-only>
-            <LineChart :data="chartExperienceData" :options="chartOptions" />
-          </client-only>
-        </div>
-      </div>
-    </div>
-
-    <!-- FINAL RESULT -->
-    <div class="w-full max-w-[90%] mx-auto pt-10 pb-20" v-if="chosenMenu === 3">
-      <div class="w-full">
-        <h1 class="font-bold text-3xl mb-5">
-          Salary Recommendation for Prospective New Employees - Final Result
-        </h1>
-        <vue-good-table
-          :columns="columnsFinal"
-          :rows="rows"
-          :search-options="{
-            enabled: true,
-          }"
-          :pagination-options="{
-            enabled: true,
-            mode: 'records',
-          }"
-          styleClass="vgt-table striped bordered"
-        />
-      </div>
-
-      <div class="w-full flex flex-wrap gap-y-10 mt-10">
-        <div class="w-full px-4">
-          <div class="w-full text-center mb-5">
-            <label class="font-bold text-3xl"
-              >Recommendation Salary for Applicant</label
-            >
-          </div>
-
-          <!-- <client-only>
-            <LineChart
-              :data="chartRecommendationSalaryData"
-              :options="chartOptions"
-            />
-          </client-only> -->
-
-          <client-only>
-            <BarChart
-              :data="chartRecommendationSalaryData"
-              :options="chartOptions"
-            />
-          </client-only>
-        </div>
-        <div class="w-1/2 px-4">
-          <div class="w-full text-center mb-5">
-            <label class="font-bold text-3xl"
-              >Comparison Category Value from Lowest & Highest
-              Recommendation</label
-            >
-          </div>
-
-          <client-only>
-            <LineChart :data="chartStackedBarData" :options="chartOptions" />
-          </client-only>
         </div>
       </div>
     </div>
@@ -230,168 +121,8 @@ export default {
   name: 'IndexPage',
   data() {
     return {
+      menu: ['Home', 'Raw Data', 'First Fuzzy', 'Final Result'],
       chosenMenu: 1,
-      columnsFinal: [
-        {
-          label: 'No',
-          field: 'id',
-          type: 'number',
-        },
-        {
-          label: 'Name',
-          field: 'name',
-        },
-        {
-          label: 'Crisp Output',
-          field: 'crispOutputSalary',
-          type: 'number',
-        },
-        {
-          label: 'Recommendation Salary (Crisp Output x Rp 1.000.000)',
-          field: 'finalSalary',
-          type: 'number',
-        },
-      ],
-      columnsFuzzy: [
-        {
-          label: 'No',
-          field: 'id',
-          type: 'number',
-        },
-        {
-          label: 'Name',
-          field: 'name',
-        },
-        {
-          label: 'Personal Information',
-          field: 'fuzzyPersonalInformation',
-          type: 'number',
-        },
-        {
-          label: 'Skills',
-          field: 'fuzzySkills',
-          type: 'number',
-        },
-        {
-          label: 'Attitude',
-          field: 'fuzzyAttitude',
-          type: 'number',
-        },
-        {
-          label: 'Experience',
-          field: 'fuzzyExperience',
-          type: 'number',
-        },
-      ],
-      columnsHome: [
-        {
-          label: 'No',
-          field: 'id',
-          type: 'number',
-        },
-        {
-          label: 'Name',
-          field: 'name',
-        },
-        {
-          label: 'Age (year)',
-          field: 'age',
-          type: 'number',
-        },
-        {
-          label: 'Marital Status',
-          field: 'marital',
-        },
-        {
-          label: 'Distance (km)',
-          field: 'distance',
-          type: 'number',
-        },
-        {
-          label: 'Dependants',
-          field: 'dependants',
-          type: 'number',
-        },
-        {
-          label: 'Formal Education',
-          field: 'education',
-        },
-        {
-          label: 'Skill of Work',
-          field: 'skills',
-          type: 'number',
-        },
-        {
-          label: 'Knowledge of Work',
-          field: 'knowledge',
-          type: 'number',
-        },
-        {
-          label: 'Speed of Work',
-          field: 'speed',
-          type: 'number',
-        },
-        {
-          label: 'Quality of Work',
-          field: 'quality',
-          type: 'number',
-        },
-        {
-          label: 'Quantity of Work',
-          field: 'quantity',
-          type: 'number',
-        },
-        {
-          label: 'Attitude',
-          field: 'attitude',
-          type: 'number',
-        },
-        {
-          label: 'Discipline',
-          field: 'discipline',
-          type: 'number',
-        },
-        {
-          label: 'Honesty',
-          field: 'honesty',
-          type: 'number',
-        },
-        {
-          label: 'Responsibility',
-          field: 'responsibility',
-          type: 'number',
-        },
-        {
-          label: 'Achievement',
-          field: 'achievement',
-        },
-        {
-          label: 'Current Position',
-          field: 'position',
-        },
-        {
-          label: 'Current Salary (Rp)',
-          field: 'formSalary',
-          type: 'number',
-        },
-        {
-          label: 'Experience of Work (year)',
-          field: 'experience',
-          type: 'number',
-        },
-        // {
-        //   label: 'Created On',
-        //   field: 'createdAt',
-        //   type: 'date',
-        //   dateInputFormat: 'yyyy-MM-dd',
-        //   dateOutputFormat: 'MMM do yy',
-        // },
-        // {
-        //   label: 'Percent',
-        //   field: 'score',
-        //   type: 'percentage',
-        // },
-      ],
       // rowsBU: [
       //   {
       //     id: '1',
@@ -1906,49 +1637,20 @@ export default {
           crispOutputSalary: '8.76632274',
         },
       ],
-      doughChartData: {
-        labels: ['NuVue', 'VueJit', 'IftShi', 'KoinVi', 'MegsWear', 'Millgh'],
-        datasets: [
-          {
-            label: 'Visualization',
-            data: [72, 131, 12, 3, 4, 55],
-            backgroundColor: [
-              'rgba(20, 255, 0, 0.85)',
-              'rgba(200, 5, 0, 0.85)',
-              'rgba(10, 220, 0, 0.85)',
-              'rgba(2, 100, 0, 0.85)',
-              'rgba(20, 55, 0, 0.85)',
-              'rgba(120, 155, 0, 0.85)',
-            ],
-            borderColor: 'rgba(100, 155, 0, 1)',
-            borderWidth: 0,
-          },
-        ],
-      },
-      doughChartOptions: {
-        responsive: true,
-        maintainAspectRatio: false,
-        offset: 8,
-        radius: 160,
-        spacing: 4,
-        hoverOffset: 32,
-        hoverBorderWidth: 1,
-        weight: 0,
-      },
       chartOptions: {
         scales: {
-          // yAxes: [
-          //   {
-          //     stacked: true,
-          //     ticks: {
-          //       beginAtZero: true,
-          //       min: 0,
-          //     },
-          //   },
-          // ],
+          yAxes: [
+            {
+              // stacked: true,
+              ticks: {
+                beginAtZero: true,
+                min: 0,
+              },
+            },
+          ],
           xAxes: [
             {
-              stacked: true,
+              // stacked: true,
               ticks: {
                 beginAtZero: true,
                 categoryPercentage: 0.5,
@@ -1963,6 +1665,14 @@ export default {
     }
   },
   computed: {
+    averageRecommendationSalary() {
+      let sum = 0
+      for (let i = 0; i < this.rows.length; i++) {
+        sum = sum + parseInt(this.rows[i].finalSalary)
+      }
+
+      return parseInt(sum / this.rows.length)
+    },
     chartMaritalStatusData() {
       let notMarried = this.rows.filter(
         (res) => res.marital === 'Belum menikah'
@@ -2018,169 +1728,36 @@ export default {
         ],
       }
     },
-    chartPersonalInformationData() {
-      let labels = []
-      let value = []
-      for (let i = 0; i < this.rows.length; i++) {
-        labels.push(this.rows[i].name)
-        value.push(this.rows[i].fuzzyPersonalInformation)
-      }
-      return {
-        labels: labels,
-        datasets: [
-          {
-            label: 'Personal Information',
-            data: value,
-            fill: false,
-            tension: 0,
-            backgroundColor: '#800000',
-            borderColor: '#ffcb2d',
-            // borderWidth: 2,
-          },
-        ],
-      }
-    },
-    chartSkillsData() {
-      let labels = []
-      let value = []
-      for (let i = 0; i < this.rows.length; i++) {
-        labels.push(this.rows[i].name)
-        value.push(this.rows[i].fuzzySkills)
-      }
-      return {
-        labels: labels,
-        datasets: [
-          {
-            label: 'Skills',
-            data: value,
-            fill: false,
-            tension: 0,
-            backgroundColor: '#800000',
-            borderColor: '#ffc3c3',
-            // borderWidth: 2,
-          },
-        ],
-      }
-    },
-    chartAttitudeData() {
-      let labels = []
-      let value = []
-      for (let i = 0; i < this.rows.length; i++) {
-        labels.push(this.rows[i].name)
-        value.push(this.rows[i].fuzzyAttitude)
-      }
-      return {
-        labels: labels,
-        datasets: [
-          {
-            label: 'Skills',
-            data: value,
-            fill: false,
-            tension: 0,
-            backgroundColor: '#800000',
-            borderColor: '#b1c3ff',
-            // borderWidth: 2,
-          },
-        ],
-      }
-    },
-    chartExperienceData() {
-      let labels = []
-      let value = []
-      for (let i = 0; i < this.rows.length; i++) {
-        labels.push(this.rows[i].name)
-        value.push(this.rows[i].fuzzyExperience)
-      }
-      return {
-        labels: labels,
-        datasets: [
-          {
-            label: 'Skills',
-            data: value,
-            fill: false,
-            tension: 0,
-            backgroundColor: '#800000',
-            borderColor: '#dfdadd',
-            // borderWidth: 2,
-          },
-        ],
-      }
-    },
-    chartRecommendationSalaryData() {
-      let labels = []
-      let value = []
-      for (let i = 0; i < this.rows.length; i++) {
-        labels.push(this.rows[i].name)
-        value.push(this.rows[i].finalSalary)
-      }
-      return {
-        labels: labels,
-        datasets: [
-          {
-            label: 'Recommendation Salary',
-            data: value,
-            fill: false,
-            tension: 0,
-            backgroundColor: '#528bff',
-            borderColor: '#f29d32',
-            // borderWidth: 2,
-          },
-        ],
-      }
-    },
-    chartStackedBarData() {
-      let labels = []
-
-      let findLowest = this.rows.find((res) => res.id === '22')
-      let lowest = {
-        personalInformation: findLowest.fuzzyPersonalInformation,
-        skills: findLowest.fuzzySkills,
-        attitude: findLowest.fuzzyAttitude,
-        experiece: findLowest.fuzzyExperience,
-      }
-      let findHighest = this.rows.find((res) => res.id === '16')
-      let highest = {
-        personalInformation: findHighest.fuzzyPersonalInformation,
-        skills: findHighest.fuzzySkills,
-        attitude: findHighest.fuzzyAttitude,
-        experiece: findHighest.fuzzyExperience,
-      }
-
-      let arr = []
-      arr.push(lowest)
-      arr.push(highest)
-      return {
-        labels: ['Personal Information', 'Skills', 'Attitude', 'Experience'],
-        datasets: [
-          {
-            label: 'Applicant 22',
-            data: [
-              lowest.personalInformation,
-              lowest.skills,
-              lowest.attitude,
-              lowest.experiece,
-            ],
-            fill: false,
-            tension: 0,
-            backgroundColor: '#b1c3ff',
-            borderColor: '#b1c3ff',
-            // borderWidth: 2,
-          },
-          {
-            label: 'Applicant 16',
-            data: [
-              highest.personalInformation,
-              highest.skills,
-              highest.attitude,
-              highest.experiece,
-            ],
-            fill: false,
-            tension: 0,
-            backgroundColor: '#ffc3c3',
-            borderColor: '#ffc3c3',
-            // borderWidth: 2,
-          },
-        ],
+  },
+  methods: {
+    formatRupiah(angka) {
+      if (angka) {
+        let toint = parseInt(angka)
+        let ang = toint.toString()
+        let idxPecahan = 0
+        for (let i = 0; i < ang.length; i++) {
+          if (ang[i] === '.') {
+            break
+          }
+          idxPecahan++
+        }
+        let pecahan = ang.substr(0, idxPecahan)
+        let split = ang.substr(0, idxPecahan).split(','),
+          sisa = split[0].length % 3,
+          desimal = ang.substr(idxPecahan + 1, ang.length),
+          rupiah = split[0].substr(0, sisa),
+          separator = '',
+          ribuan = split[0].substr(sisa).match(/\d{3}/gi)
+        if (ribuan) {
+          separator = sisa ? '.' : ''
+          rupiah += separator + ribuan.join('.')
+        }
+        if (desimal) {
+          rupiah = rupiah + ',' + desimal
+        }
+        return rupiah ? rupiah : ''
+      } else {
+        return '0,00'
       }
     },
   },
