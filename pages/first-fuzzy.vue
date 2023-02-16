@@ -1,0 +1,1148 @@
+<template>
+  <!-- <Tutorial /> -->
+  <div class="w-full">
+    <!-- NAVBAR -->
+    <!-- <div class="w-full py-4 shadow-md">
+      <div
+        class="w-full max-w-[90%] mx-auto flex flex-wrap justify-between items-center"
+      >
+        <h1 class="font-bold text-2xl">DASHBOARD</h1>
+        <img src="@/assets/img/binus-socs.png" alt="" class="w-[150px]" />
+      </div>
+    </div> -->
+
+    <div class="w-full flex flex-wrap relative">
+      <div class="w-[15%] bg-[#00425A] text-white relative px-4 py-5">
+        <div class="w-full h-fit sticky top-10">
+          <h1 class="font-bold text-2xl">DASHBOARD</h1>
+          <p class="font-bold text-sm">DSM for Determining Employee Salaries</p>
+          <div class="w-full h-0.5 bg-white my-4"></div>
+          <a href="/">
+            <p class="menu--item">Home</p>
+          </a>
+          <a href="/raw-data">
+            <p class="menu--item">Raw Data</p>
+          </a>
+          <a href="/first-fuzzy">
+            <p class="menu--item-active">First Fuzzy</p>
+          </a>
+          <a href="/final-result">
+            <p class="menu--item">Final Result</p>
+          </a>
+        </div>
+      </div>
+      <div class="w-[85%] bg-white">
+        <div class="w-full px-20 pt-10 pb-20">
+          <div class="w-full border-b-2 border-[#F5F5F5] pb-2 mb-4">
+            <h1 class="font-bold text-4xl text-dark">
+              First Stage of Fuzzy Logic - Result</h1>
+          </div>
+          <div class="w-full">
+            <vue-good-table
+              :columns="columnsFuzzy"
+              :rows="rows"
+              :search-options="{
+                enabled: true,
+              }"
+              :pagination-options="{
+                enabled: true,
+                mode: 'records',
+              }"
+              styleClass="vgt-table striped bordered"
+            />
+          </div>
+
+          <div class="w-full flex flex-wrap gap-y-10 mt-10">
+            <div class="w-1/2 px-4">
+              <div class="w-full text-center mb-5">
+                <label class="font-bold text-xl"
+                  >Personal Information Value of Applicant</label
+                >
+              </div>
+
+              <client-only>
+                <LineChart
+                  :data="chartPersonalInformationData"
+                  :options="chartOptions"
+                />
+              </client-only>
+            </div>
+            <div class="w-1/2 px-4">
+              <div class="w-full text-center mb-5">
+                <label class="font-bold text-xl"
+                  >Skills Value of Applicant</label
+                >
+              </div>
+
+              <client-only>
+                <LineChart :data="chartSkillsData" :options="chartOptions" />
+              </client-only>
+            </div>
+            <div class="w-1/2 px-4">
+              <div class="w-full text-center mb-5">
+                <label class="font-bold text-xl"
+                  >Attitude Value of Applicant</label
+                >
+              </div>
+
+              <client-only>
+                <LineChart :data="chartAttitudeData" :options="chartOptions" />
+              </client-only>
+            </div>
+            <div class="w-1/2 px-4">
+              <div class="w-full text-center mb-5">
+                <label class="font-bold text-xl"
+                  >Experience Value of Applicant</label
+                >
+              </div>
+
+              <client-only>
+                <LineChart
+                  :data="chartExperienceData"
+                  :options="chartOptions"
+                />
+              </client-only>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'IndexPage',
+  data() {
+    return {
+      menu: ['Home', 'Raw Data', 'First Fuzzy', 'Final Result'],
+      columnsFuzzy: [
+        {
+          label: 'No',
+          field: 'id',
+          type: 'number',
+        },
+        {
+          label: 'Name',
+          field: 'name',
+        },
+        {
+          label: 'Personal Information',
+          field: 'fuzzyPersonalInformation',
+          type: 'number',
+        },
+        {
+          label: 'Skills',
+          field: 'fuzzySkills',
+          type: 'number',
+        },
+        {
+          label: 'Attitude',
+          field: 'fuzzyAttitude',
+          type: 'number',
+        },
+        {
+          label: 'Experience',
+          field: 'fuzzyExperience',
+          type: 'number',
+        },
+      ],
+      rows: [
+        {
+          id: '1',
+          name: 'Applicant 1',
+          age: '21',
+          marital: 'Belum menikah',
+          distance: '0',
+          dependants: '0',
+          education:
+            'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+          skills: '100',
+          knowledge: '100',
+          speed: '6',
+          quality: '200',
+          quantity: '31',
+          attitude: '20',
+          dicipline: '20',
+          honesty: '20',
+          responsibility: '20',
+          achievement: '-',
+          position: 'Mahasiswa',
+          formSalary: '0',
+          experience: '1',
+          fuzzyPersonalInformation: '0.69503',
+          fuzzySkills: '0.49999',
+          fuzzyAttitude: '0.81429',
+          fuzzyExperience: '0.18916',
+          finalSalary: '11646435.31',
+          crispOutputSalary: '11.64643531',
+        },
+        {
+          id: '2',
+          name: 'Applicant 2',
+          age: '22',
+          marital: 'Belum menikah',
+          distance: '0',
+          dependants: '0',
+          education: 'Sarjana (S1)',
+          skills: '80',
+          knowledge: '120',
+          speed: '11',
+          quality: '200',
+          quantity: '40',
+          attitude: '20',
+          dicipline: '18',
+          honesty: '18',
+          responsibility: '15',
+          achievement: '-',
+          position: 'Software Developer',
+          formSalary: '12500000',
+          experience: '1',
+          fuzzyPersonalInformation: '0.75714',
+          fuzzySkills: '0.58889',
+          fuzzyAttitude: '0.80556',
+          fuzzyExperience: '0.28845',
+          finalSalary: '17060071.66',
+          crispOutputSalary: '17.06007166',
+        },
+        {
+          id: '3',
+          name: 'Applicant 3',
+          age: '22',
+          marital: 'Belum menikah',
+          distance: '0',
+          dependants: '0',
+          education: 'Sarjana (S1)',
+          skills: '70',
+          knowledge: '70',
+          speed: '12',
+          quality: '140',
+          quantity: '39',
+          attitude: '20',
+          dicipline: '20',
+          honesty: '19',
+          responsibility: '20',
+          achievement: '-',
+          position: 'DBA',
+          formSalary: '5000000',
+          experience: '1',
+          fuzzyPersonalInformation: '0.75714',
+          fuzzySkills: '0.45183',
+          fuzzyAttitude: '0.81429',
+          fuzzyExperience: '0.23744',
+          finalSalary: '10991129.66',
+          crispOutputSalary: '10.99112966',
+        },
+        {
+          id: '4',
+          name: 'Applicant 4',
+          age: '22',
+          marital: 'Belum menikah',
+          distance: '0',
+          dependants: '0',
+          education: 'Sarjana (S1)',
+          skills: '130',
+          knowledge: '120',
+          speed: '37',
+          quality: '250',
+          quantity: '40',
+          attitude: '17',
+          dicipline: '18',
+          honesty: '16',
+          responsibility: '18',
+          achievement: 'Kompetisi Project Capstone Bangkit',
+          position: 'Mahasiswa',
+          formSalary: '0',
+          experience: '0',
+          fuzzyPersonalInformation: '0.75714',
+          fuzzySkills: '0.61998',
+          fuzzyAttitude: '0.81429',
+          fuzzyExperience: '0.18916',
+          finalSalary: '18409258.63',
+          crispOutputSalary: '18.40925863',
+        },
+        {
+          id: '5',
+          name: 'Applicant 5',
+          age: '22',
+          marital: 'Belum menikah',
+          distance: '48',
+          dependants: '0',
+          education: 'Sarjana (S1)',
+          skills: '170',
+          knowledge: '140',
+          speed: '22',
+          quality: '310',
+          quantity: '40',
+          attitude: '18',
+          dicipline: '18',
+          honesty: '18',
+          responsibility: '18',
+          achievement: '-',
+          position: 'Software Engineer',
+          formSalary: '12200000',
+          experience: '1',
+          fuzzyPersonalInformation: '0.52484',
+          fuzzySkills: '0.75639',
+          fuzzyAttitude: '0.81429',
+          fuzzyExperience: '0.29017',
+          finalSalary: '22896752.36',
+          crispOutputSalary: '22.89675236',
+        },
+        {
+          id: '6',
+          name: 'Applicant 6',
+          age: '22',
+          marital: 'Belum menikah',
+          distance: '36',
+          dependants: '0',
+          education: 'Sarjana (S1)',
+          skills: '130',
+          knowledge: '130',
+          speed: '8',
+          quality: '260',
+          quantity: '40',
+          attitude: '16',
+          dicipline: '16',
+          honesty: '16',
+          responsibility: '16',
+          achievement: '-',
+          position: 'Quality Assurance Engineer',
+          formSalary: '10000000',
+          experience: '2',
+          fuzzyPersonalInformation: '0.52484',
+          fuzzySkills: '0.63621',
+          fuzzyAttitude: '0.81429',
+          fuzzyExperience: '0.25594',
+          finalSalary: '19060017.02',
+          crispOutputSalary: '19.06001702',
+        },
+        {
+          id: '7',
+          name: 'Applicant 7',
+          age: '24',
+          marital: 'Belum menikah',
+          distance: '1',
+          dependants: '0',
+          education: 'Magister (S2)',
+          skills: '0',
+          knowledge: '0',
+          speed: '3',
+          quality: '0',
+          quantity: '0',
+          attitude: '20',
+          dicipline: '20',
+          honesty: '18',
+          responsibility: '20',
+          achievement: 'Lulus sertifikasi,  Juara 1 Innovation Award',
+          position: 'Lecturere Specialist S1',
+          formSalary: '0',
+          experience: '3',
+          fuzzyPersonalInformation: '0.7882',
+          fuzzySkills: '0.18571',
+          fuzzyAttitude: '0.81429',
+          fuzzyExperience: '0.28571',
+          finalSalary: '4720238.1',
+          crispOutputSalary: '4.7202381',
+        },
+        {
+          id: '8',
+          name: 'Applicant 8',
+          age: '41',
+          marital: 'Sudah menikah',
+          distance: '16',
+          dependants: '2',
+          education: 'Sarjana (S1)',
+          skills: '110',
+          knowledge: '110',
+          speed: '16',
+          quality: '220',
+          quantity: '40',
+          attitude: '20',
+          dicipline: '18',
+          honesty: '18',
+          responsibility: '20',
+          achievement: '-',
+          position: 'IT Manager',
+          formSalary: '0',
+          experience: '15',
+          fuzzyPersonalInformation: '0.45762',
+          fuzzySkills: '0.55297',
+          fuzzyAttitude: '0.81429',
+          fuzzyExperience: '0.85911',
+          finalSalary: '15254339.52',
+          crispOutputSalary: '15.25433952',
+        },
+        {
+          id: '9',
+          name: 'Applicant 9',
+          age: '28',
+          marital: 'Sudah menikah',
+          distance: '33',
+          dependants: '1',
+          education: 'Sarjana (S1)',
+          skills: '50',
+          knowledge: '0',
+          speed: '8',
+          quality: '50',
+          quantity: '5',
+          attitude: '20',
+          dicipline: '20',
+          honesty: '20',
+          responsibility: '20',
+          achievement: 'Promotion to strategic level, LAC ISO 27001',
+          position: 'IT GRC Lead',
+          formSalary: '35000000',
+          experience: '7',
+          fuzzyPersonalInformation: '0.56832',
+          fuzzySkills: '0.19444',
+          fuzzyAttitude: '0.81429',
+          fuzzyExperience: '0.62069',
+          finalSalary: '4903737.93',
+          crispOutputSalary: '4.90373793',
+        },
+        {
+          id: '10',
+          name: 'Applicant 10',
+          age: '28',
+          marital: 'Sudah menikah',
+          distance: '20',
+          dependants: '2',
+          education: 'Sarjana (S1)',
+          skills: '120',
+          knowledge: '150',
+          speed: '13',
+          quality: '280',
+          quantity: '40',
+          attitude: '17',
+          dicipline: '18',
+          honesty: '15',
+          responsibility: '19',
+          achievement: '-',
+          position: 'Senior Frontend Developer',
+          formSalary: '15800000',
+          experience: '4',
+          fuzzyPersonalInformation: '0.66899',
+          fuzzySkills: '0.67597',
+          fuzzyAttitude: '0.80556',
+          fuzzyExperience: '0.4462',
+          finalSalary: '20423827.18',
+          crispOutputSalary: '20.42382718',
+        },
+        {
+          id: '11',
+          name: 'Applicant 11',
+          age: '21',
+          marital: 'Belum menikah',
+          distance: '1',
+          dependants: '0',
+          education: 'Sarjana (S1)',
+          skills: '160',
+          knowledge: '130',
+          speed: '31',
+          quality: '290',
+          quantity: '40',
+          attitude: '20',
+          dicipline: '20',
+          honesty: '20',
+          responsibility: '20',
+          achievement: '-',
+          position: 'Junior Programmer',
+          formSalary: '6000000',
+          experience: '2',
+          fuzzyPersonalInformation: '0.75714',
+          fuzzySkills: '0.6802',
+          fuzzyAttitude: '0.81429',
+          fuzzyExperience: '0.23743',
+          finalSalary: '20707533.6',
+          crispOutputSalary: '20.7075336',
+        },
+        {
+          id: '12',
+          name: 'Applicant 12',
+          age: '34',
+          marital: 'Sudah menikah',
+          distance: '20',
+          dependants: '1',
+          education: 'Magister (S2)',
+          skills: '110',
+          knowledge: '160',
+          speed: '42',
+          quality: '270',
+          quantity: '40',
+          attitude: '20',
+          dicipline: '17',
+          honesty: '18',
+          responsibility: '19',
+          achievement: 'Best Employee',
+          position: 'Senior DevOps Engineer',
+          formSalary: '19000000',
+          experience: '8',
+          fuzzyPersonalInformation: '0.47414',
+          fuzzySkills: '0.66121',
+          fuzzyAttitude: '0.81429',
+          fuzzyExperience: '0.57241',
+          finalSalary: '20013080.15',
+          crispOutputSalary: '20.01308015',
+        },
+        {
+          id: '13',
+          name: 'Applicant 13',
+          age: '34',
+          marital: 'Sudah menikah',
+          distance: '20',
+          dependants: '2',
+          education: 'Sarjana (S1)',
+          skills: '140',
+          knowledge: '100',
+          speed: '67',
+          quality: '240',
+          quantity: '40',
+          attitude: '20',
+          dicipline: '20',
+          honesty: '20',
+          responsibility: '20',
+          achievement: '-',
+          position: 'Mahasiswa',
+          formSalary: '3800000',
+          experience: '11',
+          fuzzyPersonalInformation: '0.48591',
+          fuzzySkills: '0.58889',
+          fuzzyAttitude: '0.81429',
+          fuzzyExperience: '0.59045',
+          finalSalary: '17071353.01',
+          crispOutputSalary: '17.07135301',
+        },
+        {
+          id: '14',
+          name: 'Applicant 14',
+          age: '21',
+          marital: 'Belum menikah',
+          distance: '9',
+          dependants: '0',
+          education:
+            'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+          skills: '120',
+          knowledge: '80',
+          speed: '7',
+          quality: '200',
+          quantity: '39',
+          attitude: '18',
+          dicipline: '20',
+          honesty: '17',
+          responsibility: '17',
+          achievement: '-',
+          position: 'Junior UI/UX Designer',
+          formSalary: '5200000',
+          experience: '2',
+          fuzzyPersonalInformation: '0.69503',
+          fuzzySkills: '0.58889',
+          fuzzyAttitude: '0.81429',
+          fuzzyExperience: '0.23744',
+          finalSalary: '17188473.74',
+          crispOutputSalary: '17.18847374',
+        },
+        {
+          id: '15',
+          name: 'Applicant 15',
+          age: '49',
+          marital: 'Sudah menikah',
+          distance: '12',
+          dependants: '3',
+          education: 'Sarjana (S1)',
+          skills: '120',
+          knowledge: '90',
+          speed: '70',
+          quality: '210',
+          quantity: '39',
+          attitude: '18',
+          dicipline: '19',
+          honesty: '20',
+          responsibility: '19',
+          achievement: '-',
+          position: 'IT specialist',
+          formSalary: '11000000',
+          experience: '22',
+          fuzzyPersonalInformation: '0.5275',
+          fuzzySkills: '0.52705',
+          fuzzyAttitude: '0.81429',
+          fuzzyExperience: '0.75054',
+          finalSalary: '13718670.64',
+          crispOutputSalary: '13.71867064',
+        },
+        {
+          id: '16',
+          name: 'Applicant 16',
+          age: '30',
+          marital: 'Belum menikah',
+          distance: '20',
+          dependants: '0',
+          education: 'Sarjana (S1)',
+          skills: '170',
+          knowledge: '140',
+          speed: '36',
+          quality: '310',
+          quantity: '39',
+          attitude: '20',
+          dicipline: '20',
+          honesty: '20',
+          responsibility: '20',
+          achievement: '-',
+          position: 'Staff',
+          formSalary: '9000000',
+          experience: '9',
+          fuzzyPersonalInformation: '0.75714',
+          fuzzySkills: '0.75639',
+          fuzzyAttitude: '0.81429',
+          fuzzyExperience: '0.53345',
+          finalSalary: '23353870.08',
+          crispOutputSalary: '23.35387008',
+        },
+        {
+          id: '17',
+          name: 'Applicant 17',
+          age: '37',
+          marital: 'Belum menikah',
+          distance: '15',
+          dependants: '0',
+          education: 'Sarjana (S1)',
+          skills: '100',
+          knowledge: '40',
+          speed: '23',
+          quality: '140',
+          quantity: '40',
+          attitude: '20',
+          dicipline: '18',
+          honesty: '18',
+          responsibility: '19',
+          achievement: 'Lomba Pidato, Lomba Nyanyi, Lomba Debat',
+          position: 'Mahasiswa',
+          formSalary: '2800000',
+          experience: '12',
+          fuzzyPersonalInformation: '0.42417',
+          fuzzySkills: '0.36379',
+          fuzzyAttitude: '0.81429',
+          fuzzyExperience: '0.65201',
+          finalSalary: '9261340.13',
+          crispOutputSalary: '9.26134013',
+        },
+        {
+          id: '18',
+          name: 'Applicant 18',
+          age: '22',
+          marital: 'Belum menikah',
+          distance: '0',
+          dependants: '0',
+          education:
+            'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+          skills: '140',
+          knowledge: '160',
+          speed: '30',
+          quality: '300',
+          quantity: '40',
+          attitude: '20',
+          dicipline: '19',
+          honesty: '20',
+          responsibility: '20',
+          achievement: 'Juara 2 mobile application computerun 2020',
+          position: 'Mahasiswa',
+          formSalary: '0',
+          experience: '1',
+          fuzzyPersonalInformation: '0.69503',
+          fuzzySkills: '0.72706',
+          fuzzyAttitude: '0.81429',
+          fuzzyExperience: '0.18916',
+          finalSalary: '21943722.7',
+          crispOutputSalary: '21.9437227',
+        },
+        {
+          id: '19',
+          name: 'Applicant 19',
+          age: '21',
+          marital: 'Belum menikah',
+          distance: '20',
+          dependants: '0',
+          education: 'Sarjana (S1)',
+          skills: '60',
+          knowledge: '140',
+          speed: '56',
+          quality: '200',
+          quantity: '36',
+          attitude: '19',
+          dicipline: '20',
+          honesty: '20',
+          responsibility: '20',
+          achievement: '-',
+          position: 'UI/UX Designer',
+          formSalary: '0',
+          experience: '2',
+          fuzzyPersonalInformation: '0.75714',
+          fuzzySkills: '0.49999',
+          fuzzyAttitude: '0.81429',
+          fuzzyExperience: '0.23744',
+          finalSalary: '11660613.28',
+          crispOutputSalary: '11.66061328',
+        },
+        {
+          id: '20',
+          name: 'Applicant 20',
+          age: '28',
+          marital: 'Belum menikah',
+          distance: '8',
+          dependants: '0',
+          education: 'Sarjana (S1)',
+          skills: '0',
+          knowledge: '0',
+          speed: '55',
+          quality: '0',
+          quantity: '0',
+          attitude: '16',
+          dicipline: '16',
+          honesty: '19',
+          responsibility: '19',
+          achievement: 'Promosi',
+          position: 'Middle',
+          formSalary: '12000000',
+          experience: '7',
+          fuzzyPersonalInformation: '0.74045',
+          fuzzySkills: '0.18471',
+          fuzzyAttitude: '0.81429',
+          fuzzyExperience: '0.47264',
+          finalSalary: '4591779.04',
+          crispOutputSalary: '4.59177904',
+        },
+        {
+          id: '21',
+          name: 'Applicant 21',
+          age: '29',
+          marital: 'Belum menikah',
+          distance: '12',
+          dependants: '0',
+          education: 'Sarjana (S1)',
+          skills: '0',
+          knowledge: '0',
+          speed: '4',
+          quality: '0',
+          quantity: '0',
+          attitude: '18',
+          dicipline: '18',
+          honesty: '17',
+          responsibility: '16',
+          achievement: '-',
+          position: 'Guru',
+          formSalary: '3500000',
+          experience: '5',
+          fuzzyPersonalInformation: '0.74931',
+          fuzzySkills: '0.18571',
+          fuzzyAttitude: '0.81429',
+          fuzzyExperience: '0.31299',
+          finalSalary: '4862291.74',
+          crispOutputSalary: '4.86229174',
+        },
+        {
+          id: '22',
+          name: 'Applicant 22',
+          age: '20',
+          marital: 'Belum menikah',
+          distance: '0',
+          dependants: '0',
+          education: 'Sarjana (S1)',
+          skills: '0',
+          knowledge: '0',
+          speed: '2',
+          quality: '0',
+          quantity: '0',
+          attitude: '20',
+          dicipline: '20',
+          honesty: '16',
+          responsibility: '20',
+          achievement: '-',
+          position: 'Mahasiswa',
+          formSalary: '0',
+          experience: '0',
+          fuzzyPersonalInformation: '0.75714',
+          fuzzySkills: '0.18571',
+          fuzzyAttitude: '0.81429',
+          fuzzyExperience: '0.18916',
+          finalSalary: '4514285.59',
+          crispOutputSalary: '4.51428559',
+        },
+        {
+          id: '23',
+          name: 'Applicant 23',
+          age: '25',
+          marital: 'Belum menikah',
+          distance: '12',
+          dependants: '0',
+          education: 'Magister (S2)',
+          skills: '30',
+          knowledge: '120',
+          speed: '32',
+          quality: '150',
+          quantity: '19',
+          attitude: '18',
+          dicipline: '16',
+          honesty: '18',
+          responsibility: '14',
+          achievement: '-',
+          position: 'IT Specialist',
+          formSalary: '12750000',
+          experience: '2',
+          fuzzyPersonalInformation: '0.78036',
+          fuzzySkills: '0.38333',
+          fuzzyAttitude: '0.79583',
+          fuzzyExperience: '0.28706',
+          finalSalary: '9760417.02',
+          crispOutputSalary: '9.76041702',
+        },
+        {
+          id: '24',
+          name: 'Applicant 24',
+          age: '22',
+          marital: 'Belum menikah',
+          distance: '13',
+          dependants: '0',
+          education: 'Sarjana (S1)',
+          skills: '160',
+          knowledge: '130',
+          speed: '19',
+          quality: '290',
+          quantity: '40',
+          attitude: '18',
+          dicipline: '18',
+          honesty: '19',
+          responsibility: '18',
+          achievement: '-',
+          position: 'Full Stack Developer',
+          formSalary: '8500000',
+          experience: '0',
+          fuzzyPersonalInformation: '0.74499',
+          fuzzySkills: '0.68019',
+          fuzzyAttitude: '0.81429',
+          fuzzyExperience: '0.25254',
+          finalSalary: '20707533.6',
+          crispOutputSalary: '20.7075336',
+        },
+        {
+          id: '25',
+          name: 'Applicant 25',
+          age: '24',
+          marital: 'Belum menikah',
+          distance: '0',
+          dependants: '0',
+          education:
+            'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+          skills: '120',
+          knowledge: '130',
+          speed: '35',
+          quality: '250',
+          quantity: '40',
+          attitude: '20',
+          dicipline: '14',
+          honesty: '18',
+          responsibility: '12',
+          achievement: 'Perlombaan dan Kompetisi',
+          position: 'Mahasiswa',
+          formSalary: '0',
+          experience: '1',
+          fuzzyPersonalInformation: '0.69503',
+          fuzzySkills: '0.61998',
+          fuzzyAttitude: '0.795833',
+          fuzzyExperience: '0.18916',
+          finalSalary: '18409258.63',
+          crispOutputSalary: '18.40925863',
+        },
+        {
+          id: '26',
+          name: 'Applicant 26',
+          age: '24',
+          marital: 'Belum menikah',
+          distance: '0',
+          dependants: '0',
+          education:
+            'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+          skills: '30',
+          knowledge: '50',
+          speed: '12',
+          quality: '80',
+          quantity: '40',
+          attitude: '11',
+          dicipline: '14',
+          honesty: '13',
+          responsibility: '11',
+          achievement: '-',
+          position: 'Mahasiswa',
+          formSalary: '2000000',
+          experience: '0',
+          fuzzyPersonalInformation: '0.69503',
+          fuzzySkills: '0.46171',
+          fuzzyAttitude: '0.63621',
+          fuzzyExperience: '0.18916',
+          finalSalary: '10991281.79',
+          crispOutputSalary: '10.99128179',
+        },
+        {
+          id: '27',
+          name: 'Applicant 27',
+          age: '24',
+          marital: 'Belum menikah',
+          distance: '3',
+          dependants: '0',
+          education: 'Sarjana (S1)',
+          skills: '10',
+          knowledge: '10',
+          speed: '20',
+          quality: '20',
+          quantity: '7',
+          attitude: '18',
+          dicipline: '18',
+          honesty: '19',
+          responsibility: '18',
+          achievement: 'Tidak ada',
+          position: 'IT Staff',
+          formSalary: '6000000',
+          experience: '6',
+          fuzzyPersonalInformation: '0.75714',
+          fuzzySkills: '0.20417',
+          fuzzyAttitude: '0.81429',
+          fuzzyExperience: '0.37253',
+          finalSalary: '5162627.16',
+          crispOutputSalary: '5.16262716',
+        },
+        {
+          id: '28',
+          name: 'Applicant 28',
+          age: '28',
+          marital: 'Belum menikah',
+          distance: '3',
+          dependants: '0',
+          education: 'Sarjana (S1)',
+          skills: '60',
+          knowledge: '110',
+          speed: '16',
+          quality: '170',
+          quantity: '40',
+          attitude: '20',
+          dicipline: '19',
+          honesty: '18',
+          responsibility: '20',
+          achievement: 'Promosi',
+          position: 'Account Representative',
+          formSalary: '5000000',
+          experience: '6',
+          fuzzyPersonalInformation: '0.74045',
+          fuzzySkills: '0.55297',
+          fuzzyAttitude: '0.81429',
+          fuzzyExperience: '0.37253',
+          finalSalary: '15706788.14',
+          crispOutputSalary: '15.70678814',
+        },
+        {
+          id: '29',
+          name: 'Applicant 29',
+          age: '37',
+          marital: 'Belum menikah',
+          distance: '25',
+          dependants: '0',
+          education: 'Sarjana (S1)',
+          skills: '40',
+          knowledge: '20',
+          speed: '10',
+          quality: '60',
+          quantity: '10',
+          attitude: '17',
+          dicipline: '17',
+          honesty: '14',
+          responsibility: '18',
+          achievement: 'Spot recognition award, masa bekerja award',
+          position: 'IT Analyst',
+          formSalary: '10000000',
+          experience: '10',
+          fuzzyPersonalInformation: '0.31398',
+          fuzzySkills: '0.25606',
+          fuzzyAttitude: '0.79583',
+          fuzzyExperience: '0.57919',
+          finalSalary: '6973555.53',
+          crispOutputSalary: '6.97355553',
+        },
+        {
+          id: '30',
+          name: 'Applicant 30',
+          age: '21',
+          marital: 'Belum menikah',
+          distance: '20',
+          dependants: '0',
+          education: 'Sarjana (S1)',
+          skills: '40',
+          knowledge: '60',
+          speed: '10',
+          quality: '100',
+          quantity: '13',
+          attitude: '15',
+          dicipline: '15',
+          honesty: '12',
+          responsibility: '15',
+          achievement: '-',
+          position: 'Fullstack software engineer',
+          formSalary: '10000000',
+          experience: '1.5',
+          fuzzyPersonalInformation: '0.75714',
+          fuzzySkills: '0.33879',
+          fuzzyAttitude: '0.72706',
+          fuzzyExperience: '0.30421',
+          finalSalary: '8766322.74',
+          crispOutputSalary: '8.76632274',
+        },
+      ],
+      chartOptions: {
+        scales: {
+          yAxes: [
+            {
+              // stacked: true,
+              ticks: {
+                beginAtZero: true,
+                min: 0,
+              },
+            },
+          ],
+          xAxes: [
+            {
+              // stacked: true,
+              ticks: {
+                beginAtZero: true,
+                categoryPercentage: 0.5,
+                barPercentage: 1,
+              },
+            },
+          ],
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+      },
+    }
+  },
+  computed: {
+    chartPersonalInformationData() {
+      let labels = []
+      let value = []
+      for (let i = 0; i < this.rows.length; i++) {
+        labels.push(this.rows[i].name)
+        value.push(this.rows[i].fuzzyPersonalInformation)
+      }
+      return {
+        labels: labels,
+        datasets: [
+          {
+            label: 'Personal Information',
+            data: value,
+            fill: false,
+            tension: 0,
+            backgroundColor: '#800000',
+            borderColor: '#ffcb2d',
+            // borderWidth: 2,
+          },
+        ],
+      }
+    },
+    chartSkillsData() {
+      let labels = []
+      let value = []
+      for (let i = 0; i < this.rows.length; i++) {
+        labels.push(this.rows[i].name)
+        value.push(this.rows[i].fuzzySkills)
+      }
+      return {
+        labels: labels,
+        datasets: [
+          {
+            label: 'Skills',
+            data: value,
+            fill: false,
+            tension: 0,
+            backgroundColor: '#800000',
+            borderColor: '#ffc3c3',
+            // borderWidth: 2,
+          },
+        ],
+      }
+    },
+    chartAttitudeData() {
+      let labels = []
+      let value = []
+      for (let i = 0; i < this.rows.length; i++) {
+        labels.push(this.rows[i].name)
+        value.push(this.rows[i].fuzzyAttitude)
+      }
+      return {
+        labels: labels,
+        datasets: [
+          {
+            label: 'Skills',
+            data: value,
+            fill: false,
+            tension: 0,
+            backgroundColor: '#800000',
+            borderColor: '#b1c3ff',
+            // borderWidth: 2,
+          },
+        ],
+      }
+    },
+    chartExperienceData() {
+      let labels = []
+      let value = []
+      for (let i = 0; i < this.rows.length; i++) {
+        labels.push(this.rows[i].name)
+        value.push(this.rows[i].fuzzyExperience)
+      }
+      return {
+        labels: labels,
+        datasets: [
+          {
+            label: 'Skills',
+            data: value,
+            fill: false,
+            tension: 0,
+            backgroundColor: '#800000',
+            borderColor: '#dfdadd',
+            // borderWidth: 2,
+          },
+        ],
+      }
+    },
+  },
+  methods: {
+    formatRupiah(angka) {
+      if (angka) {
+        let toint = parseInt(angka)
+        let ang = toint.toString()
+        let idxPecahan = 0
+        for (let i = 0; i < ang.length; i++) {
+          if (ang[i] === '.') {
+            break
+          }
+          idxPecahan++
+        }
+        let pecahan = ang.substr(0, idxPecahan)
+        let split = ang.substr(0, idxPecahan).split(','),
+          sisa = split[0].length % 3,
+          desimal = ang.substr(idxPecahan + 1, ang.length),
+          rupiah = split[0].substr(0, sisa),
+          separator = '',
+          ribuan = split[0].substr(sisa).match(/\d{3}/gi)
+        if (ribuan) {
+          separator = sisa ? '.' : ''
+          rupiah += separator + ribuan.join('.')
+        }
+        if (desimal) {
+          rupiah = rupiah + ',' + desimal
+        }
+        return rupiah ? rupiah : ''
+      } else {
+        return '0,00'
+      }
+    },
+  },
+  mounted() {},
+}
+</script>
