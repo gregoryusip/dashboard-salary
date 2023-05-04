@@ -124,7 +124,7 @@ export default {
           type: 'number',
         },
         {
-          label: 'Name',
+          label: 'Name of Applicant',
           field: 'name',
         },
         {
@@ -156,8 +156,7 @@ export default {
           marital: 'Belum menikah',
           distance: '0',
           dependants: '0',
-          education:
-            'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+          education: 'SMA / SMK',
           skills: '100',
           knowledge: '100',
           speed: '6',
@@ -521,8 +520,7 @@ export default {
           marital: 'Belum menikah',
           distance: '9',
           dependants: '0',
-          education:
-            'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+          education: 'SMA / SMK',
           skills: '120',
           knowledge: '80',
           speed: '7',
@@ -634,8 +632,7 @@ export default {
           marital: 'Belum menikah',
           distance: '0',
           dependants: '0',
-          education:
-            'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+          education: 'SMA / SMK',
           skills: '140',
           knowledge: '160',
           speed: '30',
@@ -831,8 +828,7 @@ export default {
           marital: 'Belum menikah',
           distance: '0',
           dependants: '0',
-          education:
-            'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+          education: 'SMA / SMK',
           skills: '120',
           knowledge: '130',
           speed: '35',
@@ -860,8 +856,7 @@ export default {
           marital: 'Belum menikah',
           distance: '0',
           dependants: '0',
-          education:
-            'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+          education: 'SMA / SMK',
           skills: '30',
           knowledge: '50',
           speed: '12',
