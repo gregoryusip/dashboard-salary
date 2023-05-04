@@ -107,14 +107,14 @@ export default {
           type: 'number',
         },
         {
-          label: 'Name',
+          label: 'Name of Applicant',
           field: 'name',
         },
-        {
-          label: 'Crisp Output',
-          field: 'crispOutputSalary',
-          type: 'number',
-        },
+        // {
+        //   label: 'Crisp Output',
+        //   field: 'crispOutputSalary',
+        //   type: 'number',
+        // },
         {
           label: 'Recommendation Salary (Crisp Output x Rp 1.000.000)',
           field: 'finalSalary',
@@ -129,8 +129,7 @@ export default {
           marital: 'Belum menikah',
           distance: '0',
           dependants: '0',
-          education:
-            'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+          education: 'SMA / SMK',
           skills: '100',
           knowledge: '100',
           speed: '6',
@@ -148,7 +147,8 @@ export default {
           fuzzySkills: '0.49999',
           fuzzyAttitude: '0.81429',
           fuzzyExperience: '0.18916',
-          finalSalary: '11646435.31',
+          finalSalary: 'Rp 11.646.435,31',
+          finalSalaryValue: '11646435.31',
           crispOutputSalary: '11.64643531',
         },
         {
@@ -176,7 +176,8 @@ export default {
           fuzzySkills: '0.58889',
           fuzzyAttitude: '0.80556',
           fuzzyExperience: '0.28845',
-          finalSalary: '17060071.66',
+          finalSalary: 'Rp 17.060.071,66',
+          finalSalaryValue: '17060071.66',
           crispOutputSalary: '17.06007166',
         },
         {
@@ -204,7 +205,8 @@ export default {
           fuzzySkills: '0.45183',
           fuzzyAttitude: '0.81429',
           fuzzyExperience: '0.23744',
-          finalSalary: '10991129.66',
+          finalSalary: 'Rp 10.991.129,66',
+          finalSalaryValue: '10991129.66',
           crispOutputSalary: '10.99112966',
         },
         {
@@ -232,7 +234,8 @@ export default {
           fuzzySkills: '0.61998',
           fuzzyAttitude: '0.81429',
           fuzzyExperience: '0.18916',
-          finalSalary: '18409258.63',
+          finalSalary: 'Rp 18.409.258,63',
+          finalSalaryValue: '18409258.63',
           crispOutputSalary: '18.40925863',
         },
         {
@@ -260,7 +263,8 @@ export default {
           fuzzySkills: '0.75639',
           fuzzyAttitude: '0.81429',
           fuzzyExperience: '0.29017',
-          finalSalary: '22896752.36',
+          finalSalary: 'Rp 22.896.752,36',
+          finalSalaryValue: '22896752.36',
           crispOutputSalary: '22.89675236',
         },
         {
@@ -288,7 +292,8 @@ export default {
           fuzzySkills: '0.63621',
           fuzzyAttitude: '0.81429',
           fuzzyExperience: '0.25594',
-          finalSalary: '19060017.02',
+          finalSalary: 'Rp 19.060.017,02',
+          finalSalaryValue: '19060017.02',
           crispOutputSalary: '19.06001702',
         },
         {
@@ -316,7 +321,8 @@ export default {
           fuzzySkills: '0.18571',
           fuzzyAttitude: '0.81429',
           fuzzyExperience: '0.28571',
-          finalSalary: '4720238.1',
+          finalSalary: 'Rp 4.720.238,10',
+          finalSalaryValue: '4720238.10',
           crispOutputSalary: '4.7202381',
         },
         {
@@ -344,7 +350,8 @@ export default {
           fuzzySkills: '0.55297',
           fuzzyAttitude: '0.81429',
           fuzzyExperience: '0.85911',
-          finalSalary: '15254339.52',
+          finalSalary: 'Rp 15.254.339,52',
+          finalSalaryValue: '15254339.52',
           crispOutputSalary: '15.25433952',
         },
         {
@@ -372,7 +379,8 @@ export default {
           fuzzySkills: '0.19444',
           fuzzyAttitude: '0.81429',
           fuzzyExperience: '0.62069',
-          finalSalary: '4903737.93',
+          finalSalary: 'Rp 4.903.737,93',
+          finalSalaryValue: '4903737.93',
           crispOutputSalary: '4.90373793',
         },
         {
@@ -400,7 +408,8 @@ export default {
           fuzzySkills: '0.67597',
           fuzzyAttitude: '0.80556',
           fuzzyExperience: '0.4462',
-          finalSalary: '20423827.18',
+          finalSalary: 'Rp 20.423.827,18',
+          finalSalaryValue: '20423827.18',
           crispOutputSalary: '20.42382718',
         },
         {
@@ -428,7 +437,8 @@ export default {
           fuzzySkills: '0.6802',
           fuzzyAttitude: '0.81429',
           fuzzyExperience: '0.23743',
-          finalSalary: '20707533.6',
+          finalSalary: 'Rp 20.707.533,60',
+          finalSalaryValue: '20707533.60',
           crispOutputSalary: '20.7075336',
         },
         {
@@ -456,7 +466,8 @@ export default {
           fuzzySkills: '0.66121',
           fuzzyAttitude: '0.81429',
           fuzzyExperience: '0.57241',
-          finalSalary: '20013080.15',
+          finalSalary: 'Rp 20.013.080,15',
+          finalSalaryValue: '20013080.15',
           crispOutputSalary: '20.01308015',
         },
         {
@@ -484,7 +495,8 @@ export default {
           fuzzySkills: '0.58889',
           fuzzyAttitude: '0.81429',
           fuzzyExperience: '0.59045',
-          finalSalary: '17071353.01',
+          finalSalary: 'Rp 17.071.353,01',
+          finalSalaryValue: '17071353.01',
           crispOutputSalary: '17.07135301',
         },
         {
@@ -494,8 +506,7 @@ export default {
           marital: 'Belum menikah',
           distance: '9',
           dependants: '0',
-          education:
-            'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+          education: 'SMA / SMK',
           skills: '120',
           knowledge: '80',
           speed: '7',
@@ -513,7 +524,8 @@ export default {
           fuzzySkills: '0.58889',
           fuzzyAttitude: '0.81429',
           fuzzyExperience: '0.23744',
-          finalSalary: '17188473.74',
+          finalSalary: 'Rp 17.188.473,74',
+          finalSalaryValue: '17188473.74',
           crispOutputSalary: '17.18847374',
         },
         {
@@ -541,7 +553,8 @@ export default {
           fuzzySkills: '0.52705',
           fuzzyAttitude: '0.81429',
           fuzzyExperience: '0.75054',
-          finalSalary: '13718670.64',
+          finalSalary: 'Rp 13.718.670,64',
+          finalSalaryValue: '13718670.64',
           crispOutputSalary: '13.71867064',
         },
         {
@@ -569,7 +582,8 @@ export default {
           fuzzySkills: '0.75639',
           fuzzyAttitude: '0.81429',
           fuzzyExperience: '0.53345',
-          finalSalary: '23353870.08',
+          finalSalary: 'Rp 23.353.870,08',
+          finalSalaryValue: '23353870.08',
           crispOutputSalary: '23.35387008',
         },
         {
@@ -597,7 +611,8 @@ export default {
           fuzzySkills: '0.36379',
           fuzzyAttitude: '0.81429',
           fuzzyExperience: '0.65201',
-          finalSalary: '9261340.13',
+          finalSalary: 'Rp 9.261.340,13',
+          finalSalaryValue: '9261340.13',
           crispOutputSalary: '9.26134013',
         },
         {
@@ -607,8 +622,7 @@ export default {
           marital: 'Belum menikah',
           distance: '0',
           dependants: '0',
-          education:
-            'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+          education: 'SMA / SMK',
           skills: '140',
           knowledge: '160',
           speed: '30',
@@ -626,7 +640,8 @@ export default {
           fuzzySkills: '0.72706',
           fuzzyAttitude: '0.81429',
           fuzzyExperience: '0.18916',
-          finalSalary: '21943722.7',
+          finalSalary: 'Rp 21.943.722,70',
+          finalSalaryValue: '21943722.70',
           crispOutputSalary: '21.9437227',
         },
         {
@@ -654,7 +669,8 @@ export default {
           fuzzySkills: '0.49999',
           fuzzyAttitude: '0.81429',
           fuzzyExperience: '0.23744',
-          finalSalary: '11660613.28',
+          finalSalary: 'Rp 11.660.613,28',
+          finalSalaryValue: '11660613.28',
           crispOutputSalary: '11.66061328',
         },
         {
@@ -682,7 +698,8 @@ export default {
           fuzzySkills: '0.18471',
           fuzzyAttitude: '0.81429',
           fuzzyExperience: '0.47264',
-          finalSalary: '4591779.04',
+          finalSalary: 'Rp 4.591.779,04',
+          finalSalaryValue: '4591779.04',
           crispOutputSalary: '4.59177904',
         },
         {
@@ -710,7 +727,8 @@ export default {
           fuzzySkills: '0.18571',
           fuzzyAttitude: '0.81429',
           fuzzyExperience: '0.31299',
-          finalSalary: '4862291.74',
+          finalSalary: 'Rp 4.862.291,74',
+          finalSalaryValue: '4862291.74',
           crispOutputSalary: '4.86229174',
         },
         {
@@ -738,7 +756,8 @@ export default {
           fuzzySkills: '0.18571',
           fuzzyAttitude: '0.81429',
           fuzzyExperience: '0.18916',
-          finalSalary: '4514285.59',
+          finalSalary: 'Rp 4.514.285,59',
+          finalSalaryValue: '4514285.59',
           crispOutputSalary: '4.51428559',
         },
         {
@@ -766,7 +785,8 @@ export default {
           fuzzySkills: '0.38333',
           fuzzyAttitude: '0.79583',
           fuzzyExperience: '0.28706',
-          finalSalary: '9760417.02',
+          finalSalary: 'Rp 9.760.417,02',
+          finalSalaryValue: '9760417.02',
           crispOutputSalary: '9.76041702',
         },
         {
@@ -794,7 +814,8 @@ export default {
           fuzzySkills: '0.68019',
           fuzzyAttitude: '0.81429',
           fuzzyExperience: '0.25254',
-          finalSalary: '20707533.6',
+          finalSalary: 'Rp 20.707.533,60',
+          finalSalaryValue: '20707533.60',
           crispOutputSalary: '20.7075336',
         },
         {
@@ -804,8 +825,7 @@ export default {
           marital: 'Belum menikah',
           distance: '0',
           dependants: '0',
-          education:
-            'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+          education: 'SMA / SMK',
           skills: '120',
           knowledge: '130',
           speed: '35',
@@ -823,7 +843,8 @@ export default {
           fuzzySkills: '0.61998',
           fuzzyAttitude: '0.795833',
           fuzzyExperience: '0.18916',
-          finalSalary: '18409258.63',
+          finalSalary: 'Rp 18.409.258,63',
+          finalSalaryValue: '18409258.63',
           crispOutputSalary: '18.40925863',
         },
         {
@@ -833,8 +854,7 @@ export default {
           marital: 'Belum menikah',
           distance: '0',
           dependants: '0',
-          education:
-            'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+          education: 'SMA / SMK',
           skills: '30',
           knowledge: '50',
           speed: '12',
@@ -852,7 +872,8 @@ export default {
           fuzzySkills: '0.46171',
           fuzzyAttitude: '0.63621',
           fuzzyExperience: '0.18916',
-          finalSalary: '10991281.79',
+          finalSalary: 'Rp 10.991.281,79',
+          finalSalaryValue: '10991281.79',
           crispOutputSalary: '10.99128179',
         },
         {
@@ -880,7 +901,8 @@ export default {
           fuzzySkills: '0.20417',
           fuzzyAttitude: '0.81429',
           fuzzyExperience: '0.37253',
-          finalSalary: '5162627.16',
+          finalSalary: 'Rp 5.162.627,16',
+          finalSalaryValue: '5162627.16',
           crispOutputSalary: '5.16262716',
         },
         {
@@ -908,7 +930,8 @@ export default {
           fuzzySkills: '0.55297',
           fuzzyAttitude: '0.81429',
           fuzzyExperience: '0.37253',
-          finalSalary: '15706788.14',
+          finalSalary: 'Rp 15.706.788,14',
+          finalSalaryValue: '15706788.14',
           crispOutputSalary: '15.70678814',
         },
         {
@@ -936,7 +959,8 @@ export default {
           fuzzySkills: '0.25606',
           fuzzyAttitude: '0.79583',
           fuzzyExperience: '0.57919',
-          finalSalary: '6973555.53',
+          finalSalary: 'Rp 6.973.555,53',
+          finalSalaryValue: '6973555.53',
           crispOutputSalary: '6.97355553',
         },
         {
@@ -964,7 +988,8 @@ export default {
           fuzzySkills: '0.33879',
           fuzzyAttitude: '0.72706',
           fuzzyExperience: '0.30421',
-          finalSalary: '8766322.74',
+          finalSalary: 'Rp 8.766.322,74',
+          finalSalaryValue: '8766322.74',
           crispOutputSalary: '8.76632274',
         },
       ],
@@ -1030,7 +1055,7 @@ export default {
       let value = []
       for (let i = 0; i < this.rows.length; i++) {
         labels.push(this.rows[i].name)
-        value.push(this.rows[i].finalSalary)
+        value.push(this.rows[i].finalSalaryValue)
       }
       return {
         labels: labels,
