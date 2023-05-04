@@ -39,7 +39,7 @@
             <h1 class="font-bold text-4xl text-dark">Home</h1>
           </div>
           <div class="w-full flex flex-wrap justify-center gap-y-4 -mx-2">
-            <div class="w-1/2 px-2">
+            <div class="w-1/2 px-2 flex flex-col">
               <div class="w-full border-2 border-[#F5F5F5] rounded-md">
                 <div class="w-full bg-[#F5F5F5] text-center py-3">
                   <p class="font-semibold text-base text-dark-text">
@@ -53,7 +53,7 @@
                 </div>
               </div>
             </div>
-            <div class="w-1/2 px-2">
+            <div class="w-1/2 px-2 flex flex-col">
               <div class="w-full border-2 border-[#F5F5F5] rounded-md">
                 <div class="w-full bg-[#F5F5F5] text-center py-3">
                   <p class="font-semibold text-base text-dark-text">Position</p>
@@ -63,7 +63,63 @@
                 </div>
               </div>
             </div>
-            <div class="w-1/2 px-2">
+            <div class="w-1/4 px-2 flex flex-col">
+              <div class="w-full border-2 border-[#F5F5F5] rounded-md">
+                <div class="w-full bg-[#F5F5F5] text-center py-3">
+                  <p class="font-semibold text-base text-dark-text">
+                    Average Personal Information
+                  </p>
+                </div>
+                <div class="w-full text-center py-3">
+                  <p class="font-bold text-xl text-dark-text">
+                    {{ averageFuzzyPersonalInformation }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="w-1/4 px-2 flex flex-col">
+              <div class="w-full border-2 border-[#F5F5F5] rounded-md">
+                <div class="w-full bg-[#F5F5F5] text-center py-3">
+                  <p class="font-semibold text-base text-dark-text">
+                    Average Skills
+                  </p>
+                </div>
+                <div class="w-full text-center py-3">
+                  <p class="font-bold text-xl text-dark-text">
+                    {{ averageFuzzySkills }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="w-1/4 px-2 flex flex-col">
+              <div class="w-full border-2 border-[#F5F5F5] rounded-md">
+                <div class="w-full bg-[#F5F5F5] text-center py-3">
+                  <p class="font-semibold text-base text-dark-text">
+                    Average Attitude
+                  </p>
+                </div>
+                <div class="w-full text-center py-3">
+                  <p class="font-bold text-xl text-dark-text">
+                    {{ averageFuzzyAttitude }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="w-1/4 px-2 flex flex-col">
+              <div class="w-full border-2 border-[#F5F5F5] rounded-md">
+                <div class="w-full bg-[#F5F5F5] text-center py-3">
+                  <p class="font-semibold text-base text-dark-text">
+                    Average Experience
+                  </p>
+                </div>
+                <div class="w-full text-center py-3">
+                  <p class="font-bold text-xl text-dark-text">
+                    {{ averageFuzzyExperience }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="w-1/2 px-2 flex flex-col">
               <div class="w-full border-2 border-[#F5F5F5] rounded-md">
                 <div class="w-full bg-[#F5F5F5] text-center py-3">
                   <p class="font-semibold text-base text-dark-text">
@@ -81,6 +137,20 @@
           </div>
 
           <div class="w-full flex flex-wrap mt-10">
+            <div class="w-full px-4 mb-10">
+              <div class="w-full text-center mb-5">
+                <label class="font-bold text-xl"
+                  >Recommendation Salary for Applicant</label
+                >
+              </div>
+
+              <client-only>
+                <BarChart
+                  :data="chartRecommendationSalaryData"
+                  :options="chartOptions"
+                />
+              </client-only>
+            </div>
             <div class="w-1/2 px-4">
               <div class="w-full text-center mb-5">
                 <label class="font-bold text-xl"
@@ -132,7 +202,7 @@ export default {
       //     distance: '0',
       //     dependants: '0',
       //     education:
-      //       'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+      //       'SMA / SMK',
       //     skills: '100',
       //     knowledge: '100',
       //     speed: '6',
@@ -419,7 +489,7 @@ export default {
       //     distance: '9',
       //     dependants: '0',
       //     education:
-      //       'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+      //       'SMA / SMK',
       //     skills: '120',
       //     knowledge: '80',
       //     speed: '7',
@@ -508,7 +578,7 @@ export default {
       //     distance: '0',
       //     dependants: '0',
       //     education:
-      //       'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+      //       'SMA / SMK',
       //     skills: '140',
       //     knowledge: '160',
       //     speed: '30',
@@ -663,7 +733,7 @@ export default {
       //     distance: '0',
       //     dependants: '0',
       //     education:
-      //       'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+      //       'SMA / SMK',
       //     skills: '120',
       //     knowledge: '130',
       //     speed: '35',
@@ -686,7 +756,7 @@ export default {
       //     distance: '0',
       //     dependants: '0',
       //     education:
-      //       'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+      //       'SMA / SMK',
       //     skills: '30',
       //     knowledge: '50',
       //     speed: '12',
@@ -798,8 +868,7 @@ export default {
           marital: 'Belum menikah',
           distance: '0',
           dependants: '0',
-          education:
-            'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+          education: 'SMA / SMK',
           skills: '100',
           knowledge: '100',
           speed: '6',
@@ -1163,8 +1232,7 @@ export default {
           marital: 'Belum menikah',
           distance: '9',
           dependants: '0',
-          education:
-            'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+          education: 'SMA / SMK',
           skills: '120',
           knowledge: '80',
           speed: '7',
@@ -1276,8 +1344,7 @@ export default {
           marital: 'Belum menikah',
           distance: '0',
           dependants: '0',
-          education:
-            'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+          education: 'SMA / SMK',
           skills: '140',
           knowledge: '160',
           speed: '30',
@@ -1473,8 +1540,7 @@ export default {
           marital: 'Belum menikah',
           distance: '0',
           dependants: '0',
-          education:
-            'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+          education: 'SMA / SMK',
           skills: '120',
           knowledge: '130',
           speed: '35',
@@ -1502,8 +1568,7 @@ export default {
           marital: 'Belum menikah',
           distance: '0',
           dependants: '0',
-          education:
-            'Sekolah Menengah Atas (SMA) / Sekolah Menengah Kejuruan (SMK)',
+          education: 'SMA / SMK',
           skills: '30',
           knowledge: '50',
           speed: '12',
@@ -1665,6 +1730,38 @@ export default {
     }
   },
   computed: {
+    averageFuzzyPersonalInformation() {
+      let sum = 0
+      for (let i = 0; i < this.rows.length; i++) {
+        sum = sum + parseFloat(this.rows[i].fuzzyPersonalInformation)
+      }
+
+      return parseFloat(sum / this.rows.length).toFixed(5)
+    },
+    averageFuzzySkills() {
+      let sum = 0
+      for (let i = 0; i < this.rows.length; i++) {
+        sum = sum + parseFloat(this.rows[i].fuzzySkills)
+      }
+
+      return parseFloat(sum / this.rows.length).toFixed(5)
+    },
+    averageFuzzyAttitude() {
+      let sum = 0
+      for (let i = 0; i < this.rows.length; i++) {
+        sum = sum + parseFloat(this.rows[i].fuzzyAttitude)
+      }
+
+      return parseFloat(sum / this.rows.length).toFixed(5)
+    },
+    averageFuzzyExperience() {
+      let sum = 0
+      for (let i = 0; i < this.rows.length; i++) {
+        sum = sum + parseFloat(this.rows[i].fuzzyExperience)
+      }
+
+      return parseFloat(sum / this.rows.length).toFixed(5)
+    },
     averageRecommendationSalary() {
       let sum = 0
       for (let i = 0; i < this.rows.length; i++) {
@@ -1672,6 +1769,28 @@ export default {
       }
 
       return parseInt(sum / this.rows.length)
+    },
+    chartRecommendationSalaryData() {
+      let labels = []
+      let value = []
+      for (let i = 0; i < this.rows.length; i++) {
+        labels.push(this.rows[i].name)
+        value.push(this.rows[i].finalSalary)
+      }
+      return {
+        labels: labels,
+        datasets: [
+          {
+            label: 'Recommendation Salary',
+            data: value,
+            fill: false,
+            tension: 0,
+            backgroundColor: '#528bff',
+            borderColor: '#f29d32',
+            // borderWidth: 2,
+          },
+        ],
+      }
     },
     chartMaritalStatusData() {
       let notMarried = this.rows.filter(
